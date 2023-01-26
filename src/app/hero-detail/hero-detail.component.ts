@@ -13,7 +13,8 @@ import {HeroService} from "../services/hero.service";
 export class HeroDetailComponent {
   // hero: Hero
 
-  @Input() hero!:Hero
+  // @Input() hero!:Hero
+  hero!:Hero
 
   constructor(private route: ActivatedRoute,
               private heroService: HeroService,
@@ -28,5 +29,9 @@ export class HeroDetailComponent {
     const id = Number(this.route.snapshot.paramMap.get('id')!.valueOf())
     this.heroService.getHero(id)
       .subscribe(date => this.hero = date)
+  }
+
+  goBack():void{
+    this.location.back()
   }
 }
